@@ -23,4 +23,5 @@ jobs:
         run: make -j$(nproc) LDFLAGS=-static
 
       - name: Test
+        working-directory: build
         run: file libtree
