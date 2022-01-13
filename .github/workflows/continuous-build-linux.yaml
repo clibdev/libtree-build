@@ -1,0 +1,21 @@
+name: Continuous Build Linux
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  static-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          name: haampie/libtree
+          ref: refs/tags/${{github.ref_name}}
+
+      - name: Build
+        run: make -j$(nproc) LDFLAGS=-static
+
+      - name: Test
+        run: file libtree
