@@ -10,8 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          name: haampie/libtree
+          repository: haampie/libtree
+          path: libtree
           ref: refs/tags/${{github.ref_name}}
 
       - name: Build
